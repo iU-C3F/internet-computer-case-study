@@ -1,0 +1,43 @@
+{
+  "canisters": {
+    "nn_backend": {
+      "type": "custom",
+      "build": "bash dfx.backend_custom_build.sh nn_backend",
+      "wasm": "target/wasm32-unknown-unknown/release/nn_backend.wasm.gz",
+      "candid": "backend/reunion/nn_backend/nn_backend.did",
+      "package": "nn_backend",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "frontend": {
+      "dependencies": [
+        "nn_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/pages/index.tsx"
+      },
+      "build": "npm run build",
+      "source": [
+        "out"
+      ],
+      "type": "assets"
+    }
+  },
+  "declarations": {
+    "output": "src/declarations"
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
