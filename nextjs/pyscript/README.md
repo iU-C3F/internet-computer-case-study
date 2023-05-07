@@ -1,4 +1,4 @@
-# Internet Computer with Next.js, TypeScript and Material-ui example
+# Internet Computer with Next.js Material-ui and PyScript
 
 ## 1. How to use
 
@@ -12,31 +12,10 @@ cd Reunion
 ### 2-1. dfx
 Run the following command to install dfx 0.12.1:
 ```sh
-DFX_VERSION=0.12.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+DFX_VERSION=0.13.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
 
-### 2-2. python
-#### 2-2-1. install python
-Run the following command to install python 3.10.7:
-
-It is highly recommended to install Python 3.10.7 using [pyenv](https://github.com/pyenv/pyenv). To do so, use the [pyenv installer](https://github.com/pyenv/pyenv-installer) as shown below:
-
-```bash
-# install pyenv
-curl https://pyenv.run | bash
-
-# install Python 3.10.7
-~/.pyenv/bin/pyenv install 3.10.7
-```
-#### 2-2-2. Kybra settings（Kybra is Python CDK for the [Internet Computer](https://internetcomputer.org/).）
-
-Follow these steps to create a Kybra project. The steps below assume a project called `hello_world`:
-
-1. Create the virtual environment: (`~/.pyenv/versions/3.10.7/bin/python -m venv venv`)
-2. Activate the virtual environment: (`source venv/bin/activate`)
-3. Install Kybra (`pip install -r requirements.txt`)
-
-### 2-3. nodejs
+### 2-2. nodejs
 Install [nodejs](https://nodejs.org/ja/download/) suitable for your environment from this site.
 (Requires version ^16.15)
 
@@ -53,10 +32,11 @@ Start up an IC replica:
 dfx start --clean --background
 ```
 
-#### 3-2. Production and Staging Deployment Setting
-read [this spreadsheet](https://docs.google.com/spreadsheets/d/1E0HpCvUlnmyA7xiuphxULQ321dVuHeCsBC_LBvHwB_4/edit#gid=0)
+#### 3-2. Run Canister Deployment Local
+After executing `./deploy_ic.sh`, enter "1" and press Enter.
 
-#### 3-3. Run Canister Deployment Local and Produntion(and Staging)
+Automatically run Nextjs web app on localhost:3000 after deploying canisters.
+
 ```sh
 ./deploy_ic.sh
 # Choose your deployment environment:
@@ -74,6 +54,8 @@ URLs:
   Backend canister via Candid interface:
     hello: http://127.0.0.1:4943/?canisterId=r7inp-6aaaa-aaaaa-aaabq-cai&id=ryjl3-tyaaa-aaaaa-aaaba-cai
 ```
+
+Open [http://localhost:3000] in your browser
 
 if stop local IC replica.
 ```sh
